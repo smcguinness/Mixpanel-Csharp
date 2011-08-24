@@ -18,7 +18,7 @@ public class Mixpanel
             this._eventParams.Add("token", this._token);
             
             var mpString = new {@event = this._mpEvent, properties = this._eventParams};
-            var mpJSON = mpString.ToJSON();
+            var mpJSON = new JavaScriptSerializer().Serialize(mpString);
 
             var encbuff = System.Text.Encoding.UTF8.GetBytes(mpJSON);
             var encString = Convert.ToBase64String(encbuff);
